@@ -3,14 +3,17 @@
 import { useState } from "react";
 import Navigation from "./components/Navigation";
 import Country from "./components/Country";
+import Loader from "./components/Loader";
 
 const App = () => {
   const [country, setCountry] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
 
   return (
     <>
-      <Navigation setCountry={setCountry} />
-      <Country country={country} />
+      <Navigation setCountry={setCountry} setIsLoading={setIsLoading} />
+
+      {isLoading ? <Loader /> : <Country country={country} />}
     </>
   );
 };
