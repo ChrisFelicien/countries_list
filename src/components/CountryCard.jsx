@@ -7,7 +7,7 @@ const CountryCard = ({ country }) => {
       <div className='flex flex-col gap-4 p-2 text-left pt-8'>
         <div className='flex justify-between'>
           <p>{country?.name.common} </p>
-          <p className='self-center bg-slate-600 text-slate-900 rounded-full px-2 py-0'>
+          <p className='text-center self-center bg-slate-600 text-slate-900 rounded-full px-2 py-0'>
             {country?.region}
           </p>
         </div>
