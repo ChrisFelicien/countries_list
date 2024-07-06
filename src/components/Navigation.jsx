@@ -29,7 +29,7 @@ const Navigation = ({ setCountry }) => {
       <input
         type='text'
         placeholder='Type the country name'
-        className='w-1/3 pl-4 py-1 text-lg rounded-md bg-slate-200 text-slate-900 translate-x-1 focus:outline-none '
+        className='sm:w-1/3 pl-4 py-1 text-lg rounded-md bg-slate-200 text-slate-900 translate-x-1 focus:outline-none w-full'
         value={countryName}
         onChange={(e) => setCountryName(e.target.value)}
       />
