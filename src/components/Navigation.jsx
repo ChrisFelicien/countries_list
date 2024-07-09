@@ -4,12 +4,15 @@ const Navigation = ({ setCountry, setIsLoading }) => {
   const [countryName, setCountryName] = useState("");
 
   useEffect(() => {
+    const controller = new AbortController();
     const fetchCountry = async () => {
       const url1 = `https://restcountries.com/v3.1/name/${countryName}`;
       const url2 = `https://restcountries.com/v3.1/all`;
       try {
         setIsLoading(true);
-        const res = await fetch(countryName ? url1 : url2);
+        const res = await fetch(countryName ? url1 : url2, {
+          signal: controller.signal,
+        });
 
         if (!res.ok) throw new Error("Problem with fetching countries data");
 
@@ -24,7 +27,11 @@ const Navigation = ({ setCountry, setIsLoading }) => {
     };
 
     fetchCountry();
-  }, [countryName, setCountry]);
+
+    return () => {
+      controller.abort();
+    };
+  }, [countryName, setCountry, setIsLoading]);
 
   return (
     <nav className='flex justify-around gap-8 p-8'>
